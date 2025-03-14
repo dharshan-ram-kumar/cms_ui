@@ -9,7 +9,7 @@ class Bloglist extends React.Component {
     };
   }
   componentDidMount() {
-    fetch("http://localhost:1338/api/blogs?populate=*")
+    fetch("http://localhost:1339/api/blogs?populate=*")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Bad Response From Server");
