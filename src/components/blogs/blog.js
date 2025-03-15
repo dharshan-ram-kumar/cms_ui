@@ -5,7 +5,7 @@ const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:1339/api/blogs?populate=*")
+    fetch("http://localhost:1337/api/blogs?populate=*")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Bad Response From Server");
@@ -24,7 +24,7 @@ const BlogList = () => {
   return (
     <div>
       {blogs.map((blog) => {
-        const imageUrl = `http://localhost:1339${blog.featuredimage?.formats?.thumbnail?.url}`;
+        const imageUrl = `http://localhost:1337${blog.featuredimage?.formats?.thumbnail?.url}`;
         return (
           <div key={blog.id} className={styles.blogCard}>
             <h3 className={styles.blogTitle}>{blog.blogtitle}</h3>
