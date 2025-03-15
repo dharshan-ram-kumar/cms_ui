@@ -1,5 +1,5 @@
 import "./App.css";
-import Bloglist from "./components/blogs/blog-list";
+import Bloglist from "./components/blogs/blog";
 
 function App() {
   return (
