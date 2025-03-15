@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./blog-card.module.css";
 
 const BlogListItem = ({
   blogtitle,
@@ -6,22 +7,25 @@ const BlogListItem = ({
   featuredimage,
   categories,
 }) => {
-//   const categoryNames = categories?.map((category) => category.categoryname);
+  //   const categoryNames = categories?.map((category) => category.categoryname);
   const imageUrl = `http://localhost:1339${featuredimage.formats.thumbnail.url}`;
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 mb-4 flex flex-col items-center text-center max-w-md mx-auto">
-      {/* <div className="text-sm text-gray-600 font-semibold mb-2">
-        {categoryNames}
-      </div> */}
-      <img
-        className="w-full h-48 object-cover rounded-md mb-4"
-        src={imageUrl}
-        alt={blogtitle}
-      />
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{blogtitle}</h3>
-      <p className="text-gray-700 text-sm">
-        {blogcontent[0]?.children[0]?.text || "No content available."}
-      </p>
+    <div className={styles.blogCard}>
+      <h3 className={styles.blogTitle}>{blogtitle}</h3>
+      <img className={styles.blogImage} src={imageUrl} alt={blogtitle} />
+      <div className={styles.blogText}>
+        {blogcontent.map((paragraph, index) => (
+          <p key={index}>
+            {paragraph.children.map((child, childIndex) =>
+              child.bold ? (
+                <h4 key={childIndex}>{child.text}</h4>
+              ) : (
+                <span key={childIndex}>{child.text} </span>
+              )
+            )}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
